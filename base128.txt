@@ -1,0 +1,47 @@
+import java.lang.Math; 
+import java.math.BigDecimal; 
+import java.math.BigInteger; 
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		
+		BigDecimal divisor =  new BigDecimal("1180706837875318457542332537705987321178653744350423564808125861631426485653807462247"); 
+		BigDecimal b =  new BigDecimal("128"); 
+		BigDecimal powerOf128;
+		BigDecimal d = new BigDecimal("0");
+		BigDecimal powerMultiplyNumber;
+		BigDecimal i;		
+		BigDecimal result;
+		BigDecimal ninetynine = new BigDecimal("99");
+		
+		for(int z = 40; z >= 0 ; z --)
+		{
+			powerOf128= b.pow(z);
+			
+			if( powerOf128.compareTo(divisor) == -1)
+			{
+				d = divisor.divide(powerOf128);
+				String l = d.toString();
+					if(d.compareTo(ninetynine) == 1)//If greater than 99
+					{
+						l = l.substring(0, 3);
+					}
+					else
+					{
+						l = l.substring(0,2);
+					}
+				i = new BigDecimal(l);
+		
+				powerMultiplyNumber = i.multiply(powerOf128);
+				result = divisor.subtract(powerMultiplyNumber ) ;
+				divisor = result;
+				
+				System.out.print(i+" ");
+			}
+		}
+	}
+	
+
+}
